@@ -1,10 +1,16 @@
 #
-#
+# .bash_profile
 #
 
-alias ls='ls -CFGw'
 PS1='\u@\h\$ '
 
-[ -f ~/.bashrc ] && . ~/.bashrc
+case `uname` in
+FreeBSD|Darwin)
+	alias ls='ls -CFGw'
+	;;
+Linux|CYGWIN)
+	alias ls='ls --color'
+	;;
+esac
 
-export PATH=/opt/local/bin:/opt/local/sbin:$PATH
+[ -f ~/.bashrc ] && . ~/.bashrc
