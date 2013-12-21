@@ -26,7 +26,7 @@ FreeBSD)
 Darwin)
 	# oracle environment
 	export ORACLE_HOME=$HOME/Application/Oracle/instantclient_10.2
-	export DYLD_LIBRARY_PATH=$ORACLE_HOME
+	# export DYLD_LIBRARY_PATH=$ORACLE_HOME
 	export NLS_LANG=JAPANESE_JAPAN.UTF8
 	export PATH=$PATH:$ORACLE_HOME
 	export MANPATH=/opt/local/share/man:$MANPATH
