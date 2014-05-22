@@ -5,10 +5,11 @@
             [lein-midje-doc "0.0.21"]
             [jonase/eastwood "0.1.2"]
             [codox "0.6.6"]
-            [cider/cider-nrepl "0.7.0-SNAPSHOT"]]
+            [cider/cider-nrepl "0.7.0-SNAPSHOT"]
+            [lein-ancient "0.4.3"]]
   :dependencies [[spyscope "0.1.4"]
                  ;; [im.chit/vinyasa "0.2.0"]
-                 [io.aviso/pretty "0.1.8"]]
+                 [io.aviso/pretty "0.1.11"]]
   :injections [(require 'spyscope.core
                         ;; 'vinyasa.inject
                         'io.aviso.repl
