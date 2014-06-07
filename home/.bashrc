@@ -30,6 +30,8 @@ Darwin)
 	export NLS_LANG=JAPANESE_JAPAN.UTF8
 	export PATH=$PATH:$ORACLE_HOME
 	export MANPATH=/opt/local/share/man:$MANPATH
+	# for LightTable
+	export LT_USER_DIR=~/.lighttable
 	;;
 Linux)
 	;;
