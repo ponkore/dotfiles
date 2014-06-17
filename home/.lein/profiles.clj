@@ -9,7 +9,7 @@
             [lein-ancient "0.4.3"]]
   :dependencies [[spyscope "0.1.4"]
                  ;; [im.chit/vinyasa "0.2.0"]
-                 [io.aviso/pretty "0.1.11"]]
+                 [io.aviso/pretty "0.1.12"]]
   :injections [(require 'spyscope.core
                         ;; 'vinyasa.inject
                         'io.aviso.repl
