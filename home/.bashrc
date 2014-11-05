@@ -2,6 +2,8 @@
 # .bashrc
 #
 
+[ -f /etc/bashrc ] && . /etc/bashrc
+
 export LANG=ja_JP.UTF-8
 export EDITOR=vim
 
