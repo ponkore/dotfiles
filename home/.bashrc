@@ -36,6 +36,13 @@ Darwin)
 	export LT_USER_DIR=~/.lighttable
 	;;
 Linux)
+	export ORACLE_BASE=/opt/app/oracle
+	export ORACLE_HOME=${ORACLE_BASE}/product/10.1.0/db_1
+	export NLS_LANG=JAPANESE_JAPAN.JA16SJISTILDE
+	export PATH=${PATH}:${ORACLE_HOME}/bin
+
+	alias sqlplus='NLS_LANG=JAPANESE_JAPAN.UTF8 sqlplus $*'
+	alias lsnrctl='NLS_LANG=JAPANESE_JAPAN.UTF8 lsnrctl $*'
 	;;
 CYGWIN)
 	export PATH=/cygdrive/c/Apps/bin:/cygdrive/c/Apps/ruby/bin:$PATH
@@ -68,6 +75,12 @@ fi
 
 ###
 [ -d ~/bin ] && PATH=~/bin:$PATH
+
+###
+if [ -d ~/.go ]; then
+	export GOPATH=~/.go
+	export PATH=$GOPATH/bin:$PATH	
+fi
 
 peco-select-history() {
 	declare l=$(HISTTIMEFORMAT= history | sort -k1,1nr | perl -ne 'BEGIN { my @lines = (); } s/^\s*\d+\s*//; $in=$_; if (!(grep {$in eq $_} @lines)) { push(@lines, $in); print $in; }' | peco --query "$READLINE_LINE")
