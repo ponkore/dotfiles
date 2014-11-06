@@ -31,7 +31,8 @@ FreeBSD)
 
 	export JAVA_VERSION=1.8
 
-	PS1="\u@\h\$ "
+	#PS1="\u@\h\$ "
+	PS1="\[\e]0;\w\a\]\[\e[32m\]\u@\h\[\e[0m\]\$ "
 	;;
 Darwin)
 	# oracle environment
@@ -51,6 +52,9 @@ Linux)
 
 	alias sqlplus='NLS_LANG=JAPANESE_JAPAN.UTF8 sqlplus $*'
 	alias lsnrctl='NLS_LANG=JAPANESE_JAPAN.UTF8 lsnrctl $*'
+
+	#PS1="\u@\h\$ "
+	PS1="\[\e]0;\w\a\]\[\e[32m\]\u@\h\[\e[0m\]\$ "
 	;;
 CYGWIN)
 	export PATH=/cygdrive/c/Apps/bin:/cygdrive/c/Apps/ruby/bin:$PATH
