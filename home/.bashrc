@@ -18,12 +18,20 @@ export EDITOR=vim
 case `uname` in
 FreeBSD)
 	# oracle environment
-	export ORACLE_BASE=/usr/lib/oracle/xe/app/oracle
-	export ORACLE_HOME=$ORACLE_BASE/product/10.2.0/server
+	# export ORACLE_BASE=/usr/lib/oracle/xe/app/oracle
+	# export ORACLE_HOME=$ORACLE_BASE/product/10.2.0/server
+	export ORACLE_HOME=~/Applications/Oracle/instantclient_10_2
+	export PATH=$PATH:$ORACLE_HOME
 	export NLS_LANG=JAPANESE_JAPAN.UTF8
 	export PATH=$PATH:$ORACLE_HOME/bin
 	export LD_LIBRARY_PATH=$ORACLE_HOME/lib
-	export ORACLE_SID=MYDB
+	alias sqlplus="LD_LIBRARY_PATH=$ORACLE_HOME sqlplus"
+	alias ls='ls -CFG'
+	alias vi='vim'
+
+	export JAVA_VERSION=1.8
+
+	PS1="\u@\h\$ "
 	;;
 Darwin)
 	# oracle environment
