@@ -1,3 +1,4 @@
-home/bin/.DS_Store
+.DS_Store
+home/bin/light
 home/.lein/self-installs
 home/.lein/repl-history
