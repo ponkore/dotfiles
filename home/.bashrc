@@ -15,6 +15,9 @@ export EDITOR=vim
 [ -d /usr/local/bin ] && PATH=/usr/local/bin:$PATH
 [ -d /usr/local/sbin ] && PATH=/usr/local/sbin:$PATH
 
+#PS1="\u@\h\$ "
+PS1="\[\e]0;\w\a\]\[\e[32m\]\u@\h\[\e[0m\]\$ "
+
 case `uname` in
 FreeBSD)
 	# oracle environment
@@ -28,16 +31,12 @@ FreeBSD)
 	alias sqlplus="LD_LIBRARY_PATH=$ORACLE_HOME sqlplus"
 	alias ls='ls -CFG'
 	alias vi='vim'
-
 	export JAVA_VERSION=1.8
-
-	#PS1="\u@\h\$ "
-	PS1="\[\e]0;\w\a\]\[\e[32m\]\u@\h\[\e[0m\]\$ "
 	;;
 Darwin)
 	# oracle environment
-	export ORACLE_HOME=$HOME/Applications/Oracle/instantclient_10_2
-	# export DYLD_LIBRARY_PATH=$ORACLE_HOME
+	export ORACLE_HOME=~/Applications/Oracle/instantclient_10_2
+	export DYLD_LIBRARY_PATH=$ORACLE_HOME
 	export NLS_LANG=JAPANESE_JAPAN.UTF8
 	export PATH=$PATH:$ORACLE_HOME
 	export MANPATH=/opt/local/share/man:$MANPATH
@@ -49,15 +48,15 @@ Linux)
 	export ORACLE_HOME=${ORACLE_BASE}/product/10.1.0/db_1
 	export NLS_LANG=JAPANESE_JAPAN.JA16SJISTILDE
 	export PATH=${PATH}:${ORACLE_HOME}/bin
-
 	alias sqlplus='NLS_LANG=JAPANESE_JAPAN.UTF8 sqlplus $*'
 	alias lsnrctl='NLS_LANG=JAPANESE_JAPAN.UTF8 lsnrctl $*'
-
-	#PS1="\u@\h\$ "
-	PS1="\[\e]0;\w\a\]\[\e[32m\]\u@\h\[\e[0m\]\$ "
 	;;
-CYGWIN)
+CYGWIN*)
 	export PATH=/cygdrive/c/Apps/bin:/cygdrive/c/Apps/ruby/bin:$PATH
+	;;
+MINGW*)
+	export MSYSTEM=MINGW32
+	export PATH=/c/Apps/msys32/usr/bin:$PATH
 	;;
 esac
 
@@ -68,9 +67,9 @@ fi
 
 ###
 if [ -d ~/.npm ]; then
-	export NODE_PATH=$HOME/.npm/libraries:$NODE_PATH
-	export PATH=$HOME/.npm/bin:$PATH
-	export MANPATH=$HOME/.npm/man:$MANPATH
+	export NODE_PATH=~/.npm/libraries:$NODE_PATH
+	export PATH=~/.npm/bin:$PATH
+	export MANPATH=~/.npm/man:$MANPATH
 fi
 
 ###
@@ -91,7 +90,7 @@ fi
 ###
 if [ -d ~/.go ]; then
 	export GOPATH=~/.go
-	export PATH=$GOPATH/bin:$PATH	
+	export PATH=$GOPATH/bin:$PATH
 fi
 
 peco-select-history() {
