@@ -15,9 +15,6 @@ export EDITOR=vim
 [ -d /usr/local/bin ] && PATH=/usr/local/bin:$PATH
 [ -d /usr/local/sbin ] && PATH=/usr/local/sbin:$PATH
 
-#PS1="\u@\h\$ "
-PS1="\[\e]0;\w\a\]\[\e[32m\]\u@\h\[\e[0m\]\$ "
-
 case `uname` in
 FreeBSD)
 	# oracle environment
@@ -29,8 +26,6 @@ FreeBSD)
 	export PATH=$PATH:$ORACLE_HOME/bin
 	export LD_LIBRARY_PATH=$ORACLE_HOME/lib
 	alias sqlplus="LD_LIBRARY_PATH=$ORACLE_HOME sqlplus"
-	alias ls='ls -CFG'
-	alias vi='vim'
 	export JAVA_VERSION=1.8
 	;;
 Darwin)
@@ -61,20 +56,20 @@ MINGW*)
 esac
 
 ###
-if [ -f ~/.proxy-setting ]; then
-	. ~/.proxy-setting
+if [ -f $HOME/.proxy-setting ]; then
+	. $HOME/.proxy-setting
 fi
 
 ###
-if [ -d ~/.npm ]; then
-	export NODE_PATH=~/.npm/libraries:$NODE_PATH
-	export PATH=~/.npm/bin:$PATH
-	export MANPATH=~/.npm/man:$MANPATH
+if [ -d $HOME/.npm ]; then
+	export NODE_PATH=$HOME/.npm/libraries:$NODE_PATH
+	export PATH=$HOME/.npm/bin:$PATH
+	export MANPATH=$HOME/.npm/man:$MANPATH
 fi
 
 ###
-if [ -d ~/work/cloudbees-sdk-1.5.2 ]; then
-	export BEES_HOME=~/work/cloudbees-sdk-1.5.2
+if [ -d $HOME/work/cloudbees-sdk-1.5.2 ]; then
+	export BEES_HOME=$HOME/work/cloudbees-sdk-1.5.2
 	export PATH=$PATH:$BEES_HOME
 fi
 
@@ -85,17 +80,10 @@ if [ -d /usr/local/heroku/bin ]; then
 fi
 
 ###
-[ -d ~/bin ] && PATH=~/bin:$PATH
+[ -d $HOME/bin ] && PATH=$HOME/bin:$PATH
 
 ###
-if [ -d ~/.go ]; then
-	export GOPATH=~/.go
+if [ -d $HOME/.go ]; then
+	export GOPATH=$HOME/.go
 	export PATH=$GOPATH/bin:$PATH
 fi
-
-peco-select-history() {
-	declare l=$(HISTTIMEFORMAT= history | sort -k1,1nr | perl -ne 'BEGIN { my @lines = (); } s/^\s*\d+\s*//; $in=$_; if (!(grep {$in eq $_} @lines)) { push(@lines, $in); print $in; }' | peco --query "$READLINE_LINE")
-	READLINE_LINE="$l"
-	READLINE_POINT=${#l}
-}
-bind -x '"\C-r": peco-select-history'

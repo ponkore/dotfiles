@@ -2,18 +2,23 @@
 # .bash_profile
 #
 
-PS1='\u@\h\$ '
-
-[ -d /opt/local/bin ] && PATH=/opt/local/bin:$PATH
-[ -d /opt/local/sbin ] && PATH=/opt/local/sbin:$PATH
+#PS1="\u@\h\$ "
+PS1="\[\e]0;\w\a\]\[\e[32m\]\u@\h\[\e[0m\]\$ "
 
 case `uname` in
 FreeBSD|Darwin)
     alias ls='ls -CFGw'
     ;;
-Linux|CYGWIN)
+Linux*|CYGWIN*|MINGW*)
     alias ls='ls --color'
     ;;
 esac
 
-[ -f ~/.bashrc ] && . ~/.bashrc
+[ -f $HOME/.bashrc ] && . $HOME/.bashrc
+
+peco-select-history() {
+	declare l=$(HISTTIMEFORMAT= history | sort -k1,1nr | perl -ne 'BEGIN { my @lines = (); } s/^\s*\d+\s*//; $in=$_; if (!(grep {$in eq $_} @lines)) { push(@lines, $in); print $in; }' | peco --query "$READLINE_LINE")
+	READLINE_LINE="$l"
+	READLINE_POINT=${#l}
+}
+bind -x '"\C-r": peco-select-history'
