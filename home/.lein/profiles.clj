@@ -3,7 +3,7 @@
  {:plugins [[lein-pprint "1.1.1"]
             [lein-midje "3.1.3"]
             [jonase/eastwood "0.1.4"]
-            [cider/cider-nrepl "0.8.0-SNAPSHOT"]
+            [cider/cider-nrepl "0.8.1"]
             [lein-ancient "0.4.3"]]
   :dependencies [[spyscope "0.1.4"]
                  [org.clojure/tools.namespace "0.2.4"]
