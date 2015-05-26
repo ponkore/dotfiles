@@ -3,30 +3,44 @@
  {:plugins [[lein-pprint "1.1.1"]
             [lein-midje "3.1.3"]
             [jonase/eastwood "0.1.4"]
-            [cider/cider-nrepl "0.8.1"]
-            [lein-ancient "0.4.3"]]
-  :dependencies [[spyscope "0.1.4"]
-                 [org.clojure/tools.namespace "0.2.4"]
+            [cider/cider-nrepl "0.9.0-SNAPSHOT"]
+            [lein-ancient "0.6.2"]
+            ]
+  :dependencies [[spyscope "0.1.5"]
+                 [org.clojure/tools.namespace "0.2.7"]
+                 [org.clojure/tools.nrepl "0.2.7"]
                  [leiningen #=(leiningen.core.main/leiningen-version)]
-                 ;; [im.chit/vinyasa "0.2.0"]
-                 [io.aviso/pretty "0.1.12"]]
-  :injections [(require 'spyscope.core
-                        ;; '[vinyasa.inject :as inj]
-                        'io.aviso.repl
-                        'clojure.repl
-                        'clojure.main)
-               ;; (inj/inject 'clojure.core
-               ;;             '[[vinyasa.inject inject]
-               ;;               [vinyasa.pull pull]
-               ;;               [vinyasa.lein lein]
-               ;;               [vinyasa.reimport reimport]
-               ;;               [clojure.repl apropos dir doc find-doc source [root-cause cause]]
-               ;;               [clojure.tools.namespace.repl [refresh refresh]]
-               ;;               [clojure.pprint [pprint >pprint]]
-               ;;               [io.aviso.binary [write-binary >bin]]])
-               (alter-var-root #'clojure.main/repl-caught (constantly @#'io.aviso.repl/pretty-pst))
-               (alter-var-root #'clojure.repl/pst (constantly @#'io.aviso.repl/pretty-pst))]
+                 [im.chit/iroh "0.1.11"]
+                 [io.aviso/pretty "0.1.8"]
+                 [im.chit/vinyasa "0.3.4"]]
+  :injections [(require 'spyscope.core)
+               (require '[vinyasa.inject :as inject])
+               (require 'io.aviso.repl)
+               (inject/in  ;; the default injected namespace is `.`
+
+                ;; note that `:refer, :all and :exclude can be used
+                [vinyasa.inject :refer [inject [in inject-in]]]
+                [vinyasa.lein :exclude [*project*]]
+
+                ;; imports all functions in vinyasa.pull
+                [vinyasa.pull :all]
+
+                ;; same as [cemerick.pomegranate
+                ;;           :refer [add-classpath get-classpath resources]]
+                [cemerick.pomegranate add-classpath get-classpath resources]
+
+                ;; inject into clojure.core
+                clojure.core
+                [vinyasa.reflection .> .? .* .% .%> .& .>ns .>var]
+
+                ;; inject into clojure.core with prefix
+                clojure.core >
+                [clojure.pprint pprint]
+                [clojure.java.shell sh]
+                [clojure.tools.namespace.repl refresh]
+                [clojure.repl apropos dir doc find-doc source [root-cause cause]])]
   }
- :repl-options {
-    :nrepl-middleware [io.aviso.nrepl/pretty-middleware]
- }}
+ ;; :repl-options {
+ ;;    :nrepl-middleware [io.aviso.nrepl/pretty-middleware]
+ ;; }
+ }
