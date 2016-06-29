@@ -1,7 +1,6 @@
 ;; http://z.caudate.me/give-your-clojure-workflow-more-flow/
 {:user
  {:plugins [[lein-pprint "1.1.2"]
-            [cider/cider-nrepl "0.12.0-SNAPSHOT"]
             [lein-ancient "0.6.8" :exclusions [org.clojure/clojure]]]
   :dependencies [[clj-time "0.11.0"]
                  [spyscope "0.1.5" :exclusions [clj-time]]
