@@ -89,3 +89,7 @@ if [ -d $HOME/.go ]; then
     export GOPATH=$HOME/.go
     export PATH=$GOPATH/bin:$PATH
 fi
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
