@@ -2,8 +2,6 @@
 # .bashrc
 #
 
-[ -f /etc/bashrc ] && . /etc/bashrc
-
 export LANG=ja_JP.UTF-8
 export EDITOR=vim
 
@@ -30,11 +28,17 @@ FreeBSD)
     ;;
 Darwin)
     # oracle environment
-    export ORACLE_HOME=~/Applications/Oracle/instantclient_10_2
-    export DYLD_LIBRARY_PATH=$ORACLE_HOME
-    export NLS_LANG=JAPANESE_JAPAN.UTF8
-    export PATH=$PATH:$ORACLE_HOME
+    if [ -d ~/Applications/Oracle ]; then
+        export ORACLE_HOME=~/Applications/Oracle/instantclient_10_2
+        export DYLD_LIBRARY_PATH=$ORACLE_HOME
+        export NLS_LANG=JAPANESE_JAPAN.UTF8
+        export PATH=$PATH:$ORACLE_HOME
+    fi
     export MANPATH=/opt/local/share/man:$MANPATH
+    # for Postgres.app
+    if [ -d /Applications/Postgres.app/Contents/Versions/latest/bin ]; then
+        PATH=$PATH:/Applications/Postgres.app/Contents/Versions/latest/bin
+    fi
     # for LightTable
     export LT_USER_DIR=~/.lighttable
     ;;
@@ -89,6 +93,10 @@ if [ -d $HOME/.go ]; then
     export GOPATH=$HOME/.go
     export PATH=$GOPATH/bin:$PATH
 fi
+
+###
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
