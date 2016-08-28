@@ -29,7 +29,12 @@ FreeBSD)
 Darwin)
     # oracle environment
     if [ -d ~/Applications/Oracle ]; then
-        export ORACLE_HOME=~/Applications/Oracle/instantclient_10_2
+        if [ -d ~/Applications/Oracle/instantclient_12_1 ]; then
+            export ORACLE_HOME=~/Applications/Oracle/instantclient_12_1
+        fi
+        if [ -d ~/Applications/Oracle/instantclient_10_2 ]; then
+            export ORACLE_HOME=~/Applications/Oracle/instantclient_10_2
+        fi
         export DYLD_LIBRARY_PATH=$ORACLE_HOME
         export NLS_LANG=JAPANESE_JAPAN.UTF8
         export PATH=$PATH:$ORACLE_HOME
@@ -41,6 +46,10 @@ Darwin)
     fi
     # for LightTable
     export LT_USER_DIR=~/.lighttable
+    # rust
+    if [ -d $HOME/.cargo/bin ]; then
+        PATH=$PATH:$HOME/.cargo/bin
+    fi
     ;;
 Linux)
     export ORACLE_BASE=/opt/app/oracle
