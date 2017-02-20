@@ -50,6 +50,10 @@ Darwin)
     if [ -d $HOME/.cargo/bin ]; then
         PATH=$PATH:$HOME/.cargo/bin
     fi
+    PATH=$PATH:/opt/local/Library/Frameworks/Python.framework/Versions/Current/bin
+    if [ -x /usr/libexec/path_helper ]; then
+        eval $(/usr/libexec/path_helper -s)
+    fi
     ;;
 Linux)
     export ORACLE_BASE=/opt/app/oracle
