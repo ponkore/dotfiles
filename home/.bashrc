@@ -6,6 +6,10 @@ export LANG=ja_JP.UTF-8
 export EDITOR=vim
 
 ###
+if [ -f $HOME/.proxy-setting ]; then
+    . $HOME/.proxy-setting
+fi
+###
 [ -d /opt/local/bin ] && PATH=/opt/local/bin:$PATH
 [ -d /opt/local/sbin ] && PATH=/opt/local/sbin:$PATH
 
@@ -54,6 +58,7 @@ Darwin)
     if [ -x /usr/libexec/path_helper ]; then
         eval $(/usr/libexec/path_helper -s)
     fi
+    alias ls='exa'
     ;;
 Linux)
     export ORACLE_BASE=/opt/app/oracle
@@ -74,9 +79,16 @@ MSYS_*|MINGW*)
     ;;
 esac
 
-###
-if [ -f $HOME/.proxy-setting ]; then
-    . $HOME/.proxy-setting
+##
+if [ ! -z "$PS1" ]; then
+    PS1="\[\e]0;\w\a\]\[\e[32m\]\u@\h\[\e[0m\]\$ "
+
+    peco-select-history() {
+        declare l=$(HISTTIMEFORMAT= history | sort -k1,1nr | perl -ne 'BEGIN { my @lines = (); } s/^\s*\d+\s*//; $in=$_; if (!(grep {$in eq $_} @lines)) { push(@lines, $in); print $in; }' | peco --query "$READLINE_LINE")
+        READLINE_LINE="$l"
+        READLINE_POINT=${#l}
+    }
+    bind -x '"\C-r": peco-select-history'
 fi
 
 ###
@@ -114,3 +126,16 @@ export NVM_DIR="$HOME/.nvm"
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+# tabtab source for serverless package
+# uninstall by removing these lines or running `tabtab uninstall serverless`
+[ -f /Users/masao/.nvm/versions/node/v9.5.0/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.bash ] && . /Users/masao/.nvm/versions/node/v9.5.0/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.bash
+# tabtab source for sls package
+# uninstall by removing these lines or running `tabtab uninstall sls`
+[ -f /Users/masao/.nvm/versions/node/v9.5.0/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.bash ] && . /Users/masao/.nvm/versions/node/v9.5.0/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.bash
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/masao/work/google-cloud-sdk/path.bash.inc' ]; then source '/Users/masao/work/google-cloud-sdk/path.bash.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/masao/work/google-cloud-sdk/completion.bash.inc' ]; then source '/Users/masao/work/google-cloud-sdk/completion.bash.inc'; fi
