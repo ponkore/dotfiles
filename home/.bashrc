@@ -139,3 +139,6 @@ if [ -f '/Users/masao/work/google-cloud-sdk/path.bash.inc' ]; then source '/User
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/masao/work/google-cloud-sdk/completion.bash.inc' ]; then source '/Users/masao/work/google-cloud-sdk/completion.bash.inc'; fi
+
+# aws cli command completion
+complete -C '/usr/local/bin/aws_completer' aws
