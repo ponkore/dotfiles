@@ -1,3 +1,2 @@
-home/bin
-home/.lein
 bin
+.lein

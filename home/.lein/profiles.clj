@@ -4,7 +4,7 @@
             [lein-ancient "0.6.14" :exclusions [org.clojure/clojure]]]}
  :repl
  {:dependencies [[clj-time "0.11.0"]
-                 [spyscope "0.1.5" :exclusions [clj-time]]
+                 [spyscope "0.1.6" :exclusions [clj-time]]
                  [org.clojure/tools.namespace "0.2.10"]
                  [org.clojure/tools.nrepl "0.2.12"]
                  [im.chit/lucid.mind "1.3.13"]
