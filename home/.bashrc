@@ -129,16 +129,16 @@ export SDKMAN_DIR="$HOME/.sdkman"
 
 # tabtab source for serverless package
 # uninstall by removing these lines or running `tabtab uninstall serverless`
-[ -f /Users/masao/.nvm/versions/node/v9.5.0/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.bash ] && . /Users/masao/.nvm/versions/node/v9.5.0/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.bash
+[ -f $HOME/.nvm/versions/node/v9.5.0/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.bash ] && . $HOME/.nvm/versions/node/v9.5.0/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.bash
 # tabtab source for sls package
 # uninstall by removing these lines or running `tabtab uninstall sls`
-[ -f /Users/masao/.nvm/versions/node/v9.5.0/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.bash ] && . /Users/masao/.nvm/versions/node/v9.5.0/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.bash
+[ -f $HOME/.nvm/versions/node/v9.5.0/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.bash ] && . $HOME/.nvm/versions/node/v9.5.0/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.bash
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/masao/work/google-cloud-sdk/path.bash.inc' ]; then source '/Users/masao/work/google-cloud-sdk/path.bash.inc'; fi
+if [ -f '$HOME/work/google-cloud-sdk/path.bash.inc' ]; then source '$HOME/work/google-cloud-sdk/path.bash.inc'; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f '/Users/masao/work/google-cloud-sdk/completion.bash.inc' ]; then source '/Users/masao/work/google-cloud-sdk/completion.bash.inc'; fi
+if [ -f '$HOME/work/google-cloud-sdk/completion.bash.inc' ]; then source '$HOME/work/google-cloud-sdk/completion.bash.inc'; fi
 
 # aws cli command completion
 complete -C '/usr/local/bin/aws_completer' aws
