@@ -11,3 +11,5 @@
 	email = ponkore@gmail.com
 [magit]
 	hideCampaign = true
+[color]
+	ui = auto
