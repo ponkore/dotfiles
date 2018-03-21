@@ -142,3 +142,6 @@ if [ -f '$HOME/work/google-cloud-sdk/completion.bash.inc' ]; then source '$HOME/
 
 # aws cli command completion
 complete -C '/usr/local/bin/aws_completer' aws
+
+# hub command completion
+[ -f $HOME/etc/hub.bash_completion.sh ] && . $HOME/etc/hub.bash_completion.sh
