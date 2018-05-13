@@ -91,6 +91,15 @@ if [ ! -z "$PS1" ]; then
     bind -x '"\C-r": peco-select-history'
 fi
 
+##
+. $HOME/.git-prompt.sh
+
+# export PS1='\u@\h \W$(__git_ps1 " (%s)")\$ '
+export PS1='\u@\h \[\033[32m\]\w\[\033[33m\]$(__git_ps1 " (%s)")\[\033[00m\]\$ '
+function cd () { builtin cd "$@" && printf "\033]0;$(__git_ps1 '%s')\007"; }
+function checkout () { git checkout "$@" && printf "\033]0;$(__git_ps1 '%s')\007"; }
+##
+
 ###
 if [ -d $HOME/.npm ]; then
     export NODE_PATH=$HOME/.npm/libraries:$NODE_PATH
