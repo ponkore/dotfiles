@@ -10,10 +10,6 @@ if [ -f $HOME/.proxy-setting ]; then
     . $HOME/.proxy-setting
 fi
 ###
-[ -d /opt/local/bin ] && PATH=/opt/local/bin:$PATH
-[ -d /opt/local/sbin ] && PATH=/opt/local/sbin:$PATH
-
-###
 [ -d /usr/local/bin ] && PATH=/usr/local/bin:$PATH
 [ -d /usr/local/sbin ] && PATH=/usr/local/sbin:$PATH
 
@@ -43,7 +39,6 @@ Darwin)
         export NLS_LANG=JAPANESE_JAPAN.UTF8
         export PATH=$PATH:$ORACLE_HOME
     fi
-    export MANPATH=/opt/local/share/man:$MANPATH
     # for Postgres.app
     if [ -d /Applications/Postgres.app/Contents/Versions/latest/bin ]; then
         PATH=$PATH:/Applications/Postgres.app/Contents/Versions/latest/bin
@@ -54,7 +49,6 @@ Darwin)
     if [ -d $HOME/.cargo/bin ]; then
         PATH=$PATH:$HOME/.cargo/bin
     fi
-    PATH=$PATH:/opt/local/Library/Frameworks/Python.framework/Versions/Current/bin
     if [ -x /usr/libexec/path_helper ]; then
         eval $(/usr/libexec/path_helper -s)
     fi
