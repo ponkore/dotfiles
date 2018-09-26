@@ -49,10 +49,16 @@ Darwin)
     if [ -d $HOME/.cargo/bin ]; then
         PATH=$PATH:$HOME/.cargo/bin
     fi
+    if [ -d $HOME/.roswell/bin ]; then
+        PATH=$PATH:$HOME/.roswell/bin
+    fi
     if [ -x /usr/libexec/path_helper ]; then
         eval $(/usr/libexec/path_helper -s)
     fi
     alias ls='exa'
+    alias rg='rg -p'
+    alias less='less -R'
+    alias cat='bat'
     ;;
 Linux)
     export ORACLE_BASE=/opt/app/oracle
