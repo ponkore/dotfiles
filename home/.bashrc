@@ -31,7 +31,7 @@ FreeBSD)
     alias less='less -R'
     alias cat='bat'
     alias mysql='mysql -h 127.0.0.1 -D ideapdb -u root -p'
-    alias psql='psql -U ideap --password ideap'
+    alias psql='psql -U ideap --password ideapdb'
     ;;
 Darwin)
     # oracle environment
@@ -62,7 +62,7 @@ Darwin)
     alias less='less -R'
     alias cat='bat'
     alias mysql='mysql -h 127.0.0.1 -D ideapdb -u root -p'
-    alias psql='psql -U ideap --password ideap'
+    alias psql='psql -U ideap --password ideapdb'
     ;;
 Linux)
     export ORACLE_BASE=/opt/app/oracle
