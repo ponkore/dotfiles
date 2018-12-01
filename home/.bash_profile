@@ -6,3 +6,6 @@
 
 eval "$(pyenv init -)"
 export PATH=$HOME/.local/bin:$PATH
+
+export PATH=$HOME/.rbenv/bin:$PATH
+eval "$(rbenv init -)"
