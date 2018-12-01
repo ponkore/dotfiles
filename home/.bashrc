@@ -123,7 +123,7 @@ MSYS_*|MINGW*)
 esac
 
 # bash completion
-if [[ $PS1 &&  ]]; then
+if [[ $PS1 ]]; then
     # macOS
     [ -f /usr/local/etc/bash_completion ] && \
 	. /usr/local/etc/bash_completion
