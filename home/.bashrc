@@ -122,6 +122,16 @@ MSYS_*|MINGW*)
     ;;
 esac
 
+# bash completion
+if [[ $PS1 &&  ]]; then
+    # macOS
+    [ -f /usr/local/etc/bash_completion ] && \
+	. /usr/local/etc/bash_completion
+    # FreeBSD
+    [ -f /usr/local/share/bash-completion/bash_completion.sh ] && \
+	. /usr/local/share/bash-completion/bash_completion.sh
+fi
+
 ##
 if [ ! -z "$PS1" ]; then
     PS1="\[\e]0;\w\a\]\[\e[32m\]\u@\h\[\e[0m\]\$ "
@@ -182,8 +192,8 @@ if command -v psql 1>/dev/null 2>&1; then
     alias psql='psql -U ideap --password'
 fi
 
-# jdk path (for OSX)
+# jdk path (for macOS)
 [ -x /usr/libexec/java_home ] && PATH=$PATH:"$(/usr/libexec/java_home)"/bin
 
-# path_helper (for OSX)
+# path_helper (for macOS)
 [ -x /usr/libexec/path_helper ] && eval $(/usr/libexec/path_helper -s)
