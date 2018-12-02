@@ -189,7 +189,7 @@ if command -v mysql 1>/dev/null 2>&1; then
     alias mysql='mysql -h 127.0.0.1 -u root -p'
 fi
 if command -v psql 1>/dev/null 2>&1; then
-    alias psql='psql -U ideap --password'
+    alias psql='psql -U root -h 192.168.11.19 ideapdb --password'
 fi
 
 # jdk path (for macOS)
