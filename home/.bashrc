@@ -173,24 +173,13 @@ fi
 # hub command completion
 [ -f $HOME/etc/hub.bash_completion.sh ] && . $HOME/etc/hub.bash_completion.sh
 
-if command -v exa 1>/dev/null 2>&1; then
-    alias ls='exa'
-fi
-if command -v rg 1>/dev/null 2>&1; then
-    alias rg='rg -p'
-fi
-if command -v less 1>/dev/null 2>&1; then
-    alias less='less -R'
-fi
-if command -v bat 1>/dev/null 2>&1; then
-    alias cat='bat'
-fi
-if command -v mysql 1>/dev/null 2>&1; then
-    alias mysql='mysql -h 127.0.0.1 -u root -p'
-fi
-if command -v psql 1>/dev/null 2>&1; then
-    alias psql='psql -U root -h 192.168.11.19 ideapdb --password'
-fi
+# aliases
+command -v exa   1>/dev/null 2>&1 && alias ls='exa'
+command -v rg    1>/dev/null 2>&1 && alias rg='rg -p'
+command -v less  1>/dev/null 2>&1 && alias less='less -R'
+command -v bat   1>/dev/null 2>&1 && alias cat='bat'
+command -v mysql 1>/dev/null 2>&1 && alias mysql='mysql -h 127.0.0.1 -u root -p'
+command -v psql  1>/dev/null 2>&1 && alias psql='psql -U root -h 192.168.11.19 ideapdb --password'
 
 # jdk path (for macOS)
 [ -x /usr/libexec/java_home ] && PATH=$PATH:"$(/usr/libexec/java_home)"/bin
