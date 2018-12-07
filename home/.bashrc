@@ -7,6 +7,9 @@ export EDITOR=vim
 ##
 [ -f $HOME/.proxy-setting ] && . $HOME/.proxy-setting
 
+# path_helper (for macOS)
+[ -x /usr/libexec/path_helper ] && eval $(/usr/libexec/path_helper -s)
+
 ##
 [ -d $HOME/bin ] && PATH=$HOME/bin:$PATH
 [ -d /usr/local/bin ] && PATH=/usr/local/bin:$PATH
@@ -50,7 +53,6 @@ if [ -d $HOME/.nvm ]; then
 	export MANPATH=$HOME/.npm/man:$MANPATH
     fi
 fi
-
 ##
 if [ -d $HOME/.sdkman ]; then
     #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
@@ -183,6 +185,3 @@ command -v psql  1>/dev/null 2>&1 && alias psql='psql -U root -h 192.168.11.19 i
 
 # jdk path (for macOS)
 [ -x /usr/libexec/java_home ] && PATH=$PATH:"$(/usr/libexec/java_home)"/bin
-
-# path_helper (for macOS)
-[ -x /usr/libexec/path_helper ] && eval $(/usr/libexec/path_helper -s)
