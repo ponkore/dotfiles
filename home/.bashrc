@@ -113,14 +113,10 @@ Linux)
     alias sqlplus='NLS_LANG=JAPANESE_JAPAN.UTF8 sqlplus $*'
     alias lsnrctl='NLS_LANG=JAPANESE_JAPAN.UTF8 lsnrctl $*'
     ;;
-CYGWIN*)
-    export PATH=/cygdrive/c/Apps/bin:/cygdrive/c/Apps/ruby/bin:$PATH
-    export PS1='\h$ '
-    ;;
 MSYS_*|MINGW*)
-    export MSYSTEM=MINGW32
-    export PATH=/c/Apps/msys32/usr/bin:$PATH
-    PS1='\h$ '
+    [ x$TERM == xscreen ] && TERM=xterm
+    alias ls='ls --color'
+    [ -d $HOME/.gem ] && PATH=$PATH:$HOME/.gem/ruby/2.4.0/bin
     ;;
 esac
 
@@ -182,6 +178,7 @@ command -v less  1>/dev/null 2>&1 && alias less='less -R'
 command -v bat   1>/dev/null 2>&1 && alias cat='bat'
 command -v mysql 1>/dev/null 2>&1 && alias mysql='mysql -h 127.0.0.1 -u root -p'
 command -v psql  1>/dev/null 2>&1 && alias psql='psql -U root -h 192.168.11.19 ideapdb --password'
+command -v vim   1>/dev/null 2>&1 && alias vi='vim'
 
 # jdk path (for macOS)
 [ -x /usr/libexec/java_home ] && PATH=$PATH:"$(/usr/libexec/java_home)"/bin
