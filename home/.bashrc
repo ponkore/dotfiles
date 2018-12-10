@@ -114,6 +114,7 @@ Linux)
     alias lsnrctl='NLS_LANG=JAPANESE_JAPAN.UTF8 lsnrctl $*'
     ;;
 MSYS_*|MINGW*)
+    [ -d /c/Apps/bin ] && PATH=$PATH:/c/Apps/bin
     [ x$TERM == xscreen ] && TERM=xterm
     alias ls='ls --color'
     [ -d $HOME/.gem ] && PATH=$PATH:$HOME/.gem/ruby/2.4.0/bin
