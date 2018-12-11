@@ -53,6 +53,10 @@ if [ -d $HOME/.nvm ]; then
 	export MANPATH=$HOME/.npm/man:$MANPATH
     fi
 fi
+# windows environment nodejs
+if [ -d "/c/Program Files/nodejs" ]; then
+    PATH=$PATH:"/c/Program Files/nodejs"
+fi
 ##
 if [ -d $HOME/.sdkman ]; then
     #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
