@@ -153,6 +153,10 @@ if [ ! -z "$PS1" ]; then
     fi
 fi
 
+## for tmux
+export TMUX_TMPDIR=/tmp/tmp.tmux
+[ ! -d $TMUX_TMPDIR ] && mkdir -m700 $TMUX_TMPDIR
+
 ##
 if [ -f $HOME/.git-prompt.sh ]; then
     . $HOME/.git-prompt.sh
