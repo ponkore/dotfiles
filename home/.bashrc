@@ -57,6 +57,11 @@ fi
 if [ -d "/c/Program Files/nodejs" ]; then
     PATH=$PATH:"/c/Program Files/nodejs"
 fi
+# windows environment for java10
+if [ -d /c/Apps/pleiades/java/10 ]; then
+    PATH=$PATH:/c/Apps/pleiades/java/10/bin
+    unset CLASSPATH
+fi
 ##
 if [ -d $HOME/.sdkman ]; then
     #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
