@@ -1,0 +1,30 @@
+-- This is a sample .nyagos written with Lua.
+-- Edit and put it on %USERPROFILE%, %HOME% or the same folder with nyagos.exe
+
+-- Simple Prompt for CMD.EXE
+-- nyagos.getenv('COMPUTERNAME')
+nyagos.env.prompt='m-kato' .. '@' .. nyagos.getenv('COMPUTERNAME') .. '$s$P$$$s'
+
+-- Coloring Prompt for NYAGOS.exe
+-- Sample 1: simple prompt string
+
+-- nyagos.prompt = '$e[40;31;1m'.. nyagos.env.prompt ..'$e[37;1m'
+
+-- Sample 2: function
+nyagos.prompt = function(this)
+    local wd = nyagos.getwd()
+    local env = nyagos.env
+    local home = env.home or env.userprofile
+    local home_len = home:len()
+    if wd:sub(1,home_len) == home then
+        wd = "~" .. wd:sub(home_len+1)
+    end
+    local title = wd .. " - NYAGOS"
+    if nyagos.elevated() then
+        return nyagos.default_prompt('$e[40;31;1m'..this..'$e[37;1m',title)
+    else
+        return nyagos.default_prompt('$e[40;32;1m'..this..'$e[37;1m',title)
+    end
+end
+
+-- vim:set ft=lua: --
