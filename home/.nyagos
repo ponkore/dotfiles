@@ -24,11 +24,11 @@ nyagos.prompt = function(this)
     local git_branch_name = nyagos.eval('git rev-parse --abbrev-ref HEAD 2>nul')
 
     if (git_branch_name ~= '') then
-       local branch_str = '$e[33m'..git_branch_name..'$e[00m';
+       local branch_str = '$e[33m('..git_branch_name..')$e[00m';
        if nyagos.elevated() then
-	  return nyagos.default_prompt('$e[40;31;1m'..this..'$s$e[37;1m('..branch_str..')$$$s',title)
+	  return nyagos.default_prompt('$e[40;31;1m'..this..'$s$e[37;1m'..branch_str..'$$$s',title)
        else
-	  return nyagos.default_prompt('$e[40;32;1m'..this..'$s$e[37;1m('..branch_str..')$$$s',title)
+	  return nyagos.default_prompt('$e[40;32;1m'..this..'$s$e[37;1m'..branch_str..'$$$s',title)
        end
     else
        if nyagos.elevated() then
