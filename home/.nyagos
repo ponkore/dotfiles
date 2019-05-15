@@ -20,10 +20,22 @@ nyagos.prompt = function(this)
         wd = "~" .. wd:sub(home_len+1)
     end
     local title = wd .. " - NYAGOS"
-    if nyagos.elevated() then
-        return nyagos.default_prompt('$e[40;31;1m'..this..'$e[37;1m$$$s',title)
+    -- git branch
+    local git_branch_name = nyagos.eval('git rev-parse --abbrev-ref HEAD 2>nul')
+
+    if (git_branch_name ~= '') then
+       local branch_str = '$e[33m'..git_branch_name..'$e[00m';
+       if nyagos.elevated() then
+	  return nyagos.default_prompt('$e[40;31;1m'..this..'$s$e[37;1m('..branch_str..')$$$s',title)
+       else
+	  return nyagos.default_prompt('$e[40;32;1m'..this..'$s$e[37;1m('..branch_str..')$$$s',title)
+       end
     else
-        return nyagos.default_prompt('$e[40;32;1m'..this..'$e[37;1m$$$s',title)
+       if nyagos.elevated() then
+	  return nyagos.default_prompt('$e[40;31;1m'..this..'$e[37;1m$$$s',title)
+       else
+	  return nyagos.default_prompt('$e[40;32;1m'..this..'$e[37;1m$$$s',title)
+       end
     end
 end
 
