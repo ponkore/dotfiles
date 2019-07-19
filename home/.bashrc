@@ -170,7 +170,7 @@ fi
 [ -d /usr/local/heroku/bin ] && export PATH="/usr/local/heroku/bin:$PATH"
 
 # Google Cloud SDK
-GCLOUD_DIR=$HOME/work/google-cloud-sdk
+GCLOUD_DIR=/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk
 if [ -d $GCLOUD_DIR ]; then
     # The next line updates PATH for the Google Cloud SDK.
     [ -f $GCLOUD_DIR/path.bash.inc ] && . $GCLOUD_DIR/path.bash.inc
