@@ -196,3 +196,6 @@ command -v vim   1>/dev/null 2>&1 && alias vi='vim'
 
 # jdk path (for macOS)
 [ -x /usr/libexec/java_home ] && PATH=$PATH:"$(/usr/libexec/java_home)"/bin
+
+# flutter sdk
+[ -d $HOME/Applications/flutter ] && PATH=$PATH:$HOME/Applications/flutter/bin
