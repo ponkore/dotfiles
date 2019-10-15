@@ -191,8 +191,11 @@ command -v rg    1>/dev/null 2>&1 && alias rg='rg -p'
 command -v less  1>/dev/null 2>&1 && alias less='less -R'
 command -v bat   1>/dev/null 2>&1 && alias cat='bat'
 command -v mysql 1>/dev/null 2>&1 && alias mysql='mysql -h 127.0.0.1 -u root -p'
-command -v psql  1>/dev/null 2>&1 && alias psql='psql -U root -h 192.168.11.19 ideapdb --password'
+command -v psql  1>/dev/null 2>&1 && alias psql='psql -U postgres -h 127.0.0.1 fwdssdb --password'
+command -v php   1>/dev/null 2>&1 && alias php='docker exec -w /home/fwdss/fwdsalessupport -it v1_develop_fwdss_websv_dev_1 php $*'
+command -v phpunit 1>/dev/null 2>&1 && alias phpunit='docker exec -w /home/fwdss/fwdsalessupport -it v1_develop_fwdss_websv_dev_1 php vendor/bin/phpun it $*'
 command -v vim   1>/dev/null 2>&1 && alias vi='vim'
+command -v lein  1>/dev/null 2>&1 && alias lein='LEIN_USE_BOOTCLASSPATH=no lein'
 
 # jdk path (for macOS)
 [ -x /usr/libexec/java_home ] && PATH=$PATH:"$(/usr/libexec/java_home)"/bin
