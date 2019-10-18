@@ -202,3 +202,5 @@ command -v lein  1>/dev/null 2>&1 && alias lein='LEIN_USE_BOOTCLASSPATH=no lein'
 
 # flutter sdk
 [ -d $HOME/Applications/flutter ] && PATH=$PATH:$HOME/Applications/flutter/bin
+
+export RUBYOPT=-W0
