@@ -25,6 +25,15 @@ if [ -d $HOME/.pyenv ]; then
 fi
 
 ##
+if [ -d $HOME/.phpenv ]; then
+    export PHPENV_ROOT="$HOME/.phpenv"
+    export PATH="$PHPENV_ROOT/bin:$PATH"
+    if command -v phpenv 1>/dev/null 2>&1; then
+	eval "$(phpenv init -)"
+    fi
+fi
+
+##
 if [ -d $HOME/.rbenv ]; then
     export PATH="$HOME/.rbenv/bin:$PATH"
     eval "$(rbenv init -)"
@@ -192,10 +201,12 @@ command -v less  1>/dev/null 2>&1 && alias less='less -R'
 command -v bat   1>/dev/null 2>&1 && alias cat='bat'
 command -v mysql 1>/dev/null 2>&1 && alias mysql='mysql -h 127.0.0.1 -u root -p'
 command -v psql  1>/dev/null 2>&1 && alias psql='psql -U postgres -h 127.0.0.1 fwdssdb --password'
-command -v php   1>/dev/null 2>&1 && alias php='docker exec -w /home/fwdss/fwdsalessupport -it v1_develop_fwdss_websv_dev_1 php $*'
-command -v phpunit 1>/dev/null 2>&1 && alias phpunit='docker exec -w /home/fwdss/fwdsalessupport -it v1_develop_fwdss_websv_dev_1 php vendor/bin/phpun it $*'
 command -v vim   1>/dev/null 2>&1 && alias vi='vim'
 command -v lein  1>/dev/null 2>&1 && alias lein='LEIN_USE_BOOTCLASSPATH=no lein'
+
+# docker command alias
+alias dphp='docker exec -w /home/fwdss/fwdsalessupport -it v1_develop_fwdss_websv_dev_1 php $*'
+alias dphpunit='docker exec -w /home/fwdss/fwdsalessupport -it v1_develop_fwdss_websv_dev_1 php vendor/bin/phpun it $*'
 
 # jdk path (for macOS)
 [ -x /usr/libexec/java_home ] && PATH=$PATH:"$(/usr/libexec/java_home)"/bin
