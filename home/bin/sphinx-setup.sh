@@ -1,6 +1,11 @@
 #!/bin/sh
 
-project_name='hoge'
+if [ $# -ne 1 ]; then
+    echo usage: $0 "[projectname]"
+    exit 1
+fi
+
+project_name=$1
 
 author="Masao KATO"
 version="1.0"
