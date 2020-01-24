@@ -215,3 +215,4 @@ alias dphpunit='docker exec -w /home/fwdss/fwdsalessupport -it v1_develop_fwdss_
 [ -d $HOME/Applications/flutter ] && PATH=$PATH:$HOME/Applications/flutter/bin
 
 export RUBYOPT=-W0
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
