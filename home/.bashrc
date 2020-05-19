@@ -37,6 +37,8 @@ fi
 if [ -d $HOME/.rbenv ]; then
     export PATH="$HOME/.rbenv/bin:$PATH"
     eval "$(rbenv init -)"
+    export RUBYOPT=-W0
+    export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
 fi
 
 ##
@@ -66,9 +68,9 @@ fi
 if [ -d "/c/Program Files/nodejs" ]; then
     PATH=$PATH:"/c/Program Files/nodejs"
 fi
-# windows environment for java10
-if [ -d /c/Apps/pleiades/java/10 ]; then
-    PATH=$PATH:/c/Apps/pleiades/java/10/bin
+# windows environment for java11
+if [ -d /c/Apps/pleiades/java/11 ]; then
+    PATH=$PATH:/c/Apps/pleiades/java/11/bin
     unset CLASSPATH
 fi
 ##
@@ -214,4 +216,3 @@ alias dphpunit='docker exec -w /home/fwdss/fwdsalessupport -it v1_develop_fwdss_
 # flutter sdk
 [ -d $HOME/Applications/flutter ] && PATH=$PATH:$HOME/Applications/flutter/bin
 
-export RUBYOPT=-W0
