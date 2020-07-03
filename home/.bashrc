@@ -45,6 +45,7 @@ fi
 if [ -d $HOME/.nvm ]; then
     export NVM_DIR=$HOME/.nvm
     [ -s $NVM_DIR/nvm.sh ] && . $NVM_DIR/nvm.sh  # This loads nvm
+    [ -s $NVM_DIR/bash_completion ] && . $NVM_DIR/bash_completion  # This loads nvm bash_completion
 
     # tabtab source for serverless package
     # uninstall by removing these lines or running `tabtab uninstall serverless`
@@ -215,7 +216,6 @@ alias dphpunit='docker exec -w /home/fwdss/fwdsalessupport -it v1_develop_fwdss_
 
 # flutter sdk
 [ -d $HOME/Applications/flutter ] && PATH=$PATH:$HOME/Applications/flutter/bin
-
 
 # tabtab source for packages
 # uninstall by removing these lines
