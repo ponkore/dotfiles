@@ -216,3 +216,10 @@ alias dphpunit='docker exec -w /home/fwdss/fwdsalessupport -it v1_develop_fwdss_
 # flutter sdk
 [ -d $HOME/Applications/flutter ] && PATH=$PATH:$HOME/Applications/flutter/bin
 
+
+# tabtab source for packages
+# uninstall by removing these lines
+[ -f ~/.config/tabtab/__tabtab.bash ] && . ~/.config/tabtab/__tabtab.bash || true
+
+[ -d ~/Library/Android/sdk/platform-tools ] && PATH=~/Library/Android/sdk/platform-tools:$PATH
+[ -d ~/Library/Android/sdk/ndk/21.3.6528147 ] && PATH=~/Library/Android/sdk/ndk/21.3.6528147:$PATH
