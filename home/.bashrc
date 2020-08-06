@@ -38,7 +38,7 @@ if [ -d $HOME/.rbenv ]; then
     export PATH="$HOME/.rbenv/bin:$PATH"
     eval "$(rbenv init -)"
     export RUBYOPT=-W0
-    export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
+    # export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
 fi
 
 ##
@@ -106,7 +106,7 @@ FreeBSD)
         export LD_LIBRARY_PATH=$ORACLE_HOME/lib
         alias sqlplus="LD_LIBRARY_PATH=$ORACLE_HOME sqlplus"
     fi
-    export JAVA_VERSION=1.8
+    export JAVA_VERSION=11
     ;;
 Darwin)
     # oracle environment
