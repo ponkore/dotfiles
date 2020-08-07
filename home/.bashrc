@@ -95,29 +95,9 @@ fi
 
 case `uname` in
 FreeBSD)
-    # oracle environment
-    if [ -d $HOME/Applications/Oracle ]; then
-        # export ORACLE_BASE=/usr/lib/oracle/xe/app/oracle
-        # export ORACLE_HOME=$ORACLE_BASE/product/10.2.0/server
-        export ORACLE_HOME=$HOME/Applications/Oracle/instantclient_10_2
-        export PATH=$PATH:$ORACLE_HOME
-        export NLS_LANG=JAPANESE_JAPAN.UTF8
-        export PATH=$PATH:$ORACLE_HOME/bin
-        export LD_LIBRARY_PATH=$ORACLE_HOME/lib
-        alias sqlplus="LD_LIBRARY_PATH=$ORACLE_HOME sqlplus"
-    fi
     export JAVA_VERSION=11
     ;;
 Darwin)
-    # oracle environment
-    if [ -d $HOME/Applications/Oracle ]; then
-        if [ -d $HOME/Applications/Oracle/instantclient_12_1 ]; then
-            export ORACLE_HOME=$HOME/Applications/Oracle/instantclient_12_1
-        fi
-        export DYLD_LIBRARY_PATH=$ORACLE_HOME
-        export NLS_LANG=JAPANESE_JAPAN.UTF8
-        export PATH=$PATH:$ORACLE_HOME
-    fi
     # for Postgres.app
     [ -d /Applications/Postgres.app/Contents/Versions/latest/bin ] &&
         PATH=$PATH:/Applications/Postgres.app/Contents/Versions/latest/bin
@@ -127,12 +107,6 @@ Darwin)
     [ -d $HOME/.lighttable ] && export LT_USER_DIR=$HOME/.lighttable
     ;;
 Linux)
-    export ORACLE_BASE=/opt/app/oracle
-    export ORACLE_HOME=${ORACLE_BASE}/product/10.1.0/db_1
-    export NLS_LANG=JAPANESE_JAPAN.JA16SJISTILDE
-    export PATH=${PATH}:${ORACLE_HOME}/bin
-    alias sqlplus='NLS_LANG=JAPANESE_JAPAN.UTF8 sqlplus $*'
-    alias lsnrctl='NLS_LANG=JAPANESE_JAPAN.UTF8 lsnrctl $*'
     ;;
 MSYS_*|MINGW*)
     [ -d /c/Apps/bin ] && PATH=$PATH:/c/Apps/bin
