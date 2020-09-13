@@ -16,11 +16,11 @@ export EDITOR=vim
 [ -d /usr/local/sbin ] && PATH=/usr/local/sbin:$PATH
 
 ##
-if [ -d $HOME/.pyenv ]; then
+if [ -d $HOME/.pyenv -a ! -d $HOME/.pyenv/pyenv-win ]; then
     export PYENV_ROOT=$HOME/.pyenv
     export PATH="$PYENV_ROOT/bin:$PATH"
     if command -v pyenv 1>/dev/null 2>&1; then
-	eval "$(pyenv init -)"
+       eval "$(pyenv init -)"
     fi
 fi
 
@@ -29,7 +29,7 @@ if [ -d $HOME/.phpenv ]; then
     export PHPENV_ROOT="$HOME/.phpenv"
     export PATH="$PHPENV_ROOT/bin:$PATH"
     if command -v phpenv 1>/dev/null 2>&1; then
-	eval "$(phpenv init -)"
+        eval "$(phpenv init -)"
     fi
 fi
 
@@ -60,9 +60,9 @@ if [ -d $HOME/.nvm ]; then
     fi
     ##
     if [ -d $HOME/.npm ]; then
-	export NODE_PATH=$HOME/.npm/libraries:$NODE_PATH
-	export PATH=$HOME/.npm/bin:$PATH
-	export MANPATH=$HOME/.npm/man:$MANPATH
+        export NODE_PATH=$HOME/.npm/libraries:$NODE_PATH
+        export PATH=$HOME/.npm/bin:$PATH
+        export MANPATH=$HOME/.npm/man:$MANPATH
     fi
 fi
 # windows environment nodejs
@@ -120,10 +120,10 @@ esac
 if [[ $PS1 ]]; then
     # macOS
     [ -f /usr/local/etc/bash_completion ] && \
-	. /usr/local/etc/bash_completion
+        . /usr/local/etc/bash_completion
     # FreeBSD
     [ -f /usr/local/share/bash-completion/bash_completion.sh ] && \
-	. /usr/local/share/bash-completion/bash_completion.sh
+        . /usr/local/share/bash-completion/bash_completion.sh
 fi
 
 ##

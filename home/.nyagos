@@ -39,4 +39,7 @@ nyagos.prompt = function(this)
     end
 end
 
+nyagos.alias.rg="rg -p"
+nyagos.alias.less="less -R"
+
 -- vim:set ft=lua: --
