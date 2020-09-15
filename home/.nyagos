@@ -41,5 +41,6 @@ end
 
 nyagos.alias.rg="rg -p"
 nyagos.alias.less="less -R"
-
+nyagos.alias.wx="docker exec -w /home/mapex -it mapex_web_1"
+nyagos.alias.wf="docker exec -w /home/mapex/frontend -it mapex_web_1"
 -- vim:set ft=lua: --
