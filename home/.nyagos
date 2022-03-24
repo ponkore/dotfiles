@@ -3,7 +3,7 @@
 
 -- Simple Prompt for CMD.EXE
 -- nyagos.getenv('COMPUTERNAME')
-nyagos.env.prompt='m-kato' .. '@' .. nyagos.getenv('COMPUTERNAME') .. '$s$P'
+nyagos.env.prompt='masao' .. '@' .. string.lower(nyagos.getenv('COMPUTERNAME')) .. '$s$P'
 
 -- Coloring Prompt for NYAGOS.exe
 -- Sample 1: simple prompt string
@@ -26,21 +26,25 @@ nyagos.prompt = function(this)
     if (git_branch_name ~= '') then
        local branch_str = '$e[33m('..git_branch_name..')$e[00m';
        if nyagos.elevated() then
-	  return nyagos.default_prompt('$e[40;31;1m'..this..'$s$e[37;1m'..branch_str..'$$$s',title)
+          return nyagos.default_prompt('$e[40;31;1m'..this..'$s$e[37;1m'..branch_str..'$$$s',title)
        else
-	  return nyagos.default_prompt('$e[40;32;1m'..this..'$s$e[37;1m'..branch_str..'$$$s',title)
+          return nyagos.default_prompt('$e[40;32;1m'..this..'$s$e[37;1m'..branch_str..'$$$s',title)
        end
     else
        if nyagos.elevated() then
-	  return nyagos.default_prompt('$e[40;31;1m'..this..'$e[37;1m$$$s',title)
+          return nyagos.default_prompt('$e[40;31;1m'..this..'$e[37;1m$$$s',title)
        else
-	  return nyagos.default_prompt('$e[40;32;1m'..this..'$e[37;1m$$$s',title)
+          return nyagos.default_prompt('$e[40;32;1m'..this..'$e[37;1m$$$s',title)
        end
     end
 end
 
+nyagos.alias.cat="bat"
+nyagos.alias.ls="lsd"
 nyagos.alias.rg="rg -p"
 nyagos.alias.less="less -R"
 nyagos.alias.wx="docker exec -w /home/mapex -it mapex_web_1"
 nyagos.alias.wf="docker exec -w /home/mapex/frontend -it mapex_web_1"
+-- nyagos.alias.vi="c:/Apps/vim82-kaoriya-win64/vim.exe"
+-- nyagos.alias.vim="c:/Apps/vim82-kaoriya-win64/vim.exe"
 -- vim:set ft=lua: --

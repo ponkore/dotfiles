@@ -107,11 +107,13 @@ Darwin)
     [ -d $HOME/.lighttable ] && export LT_USER_DIR=$HOME/.lighttable
     ;;
 Linux)
+    alias ls='ls --color -CF'
+    alias sail='/mnt/c/Projects/mapex-web/vendor/bin/sail'
     ;;
 MSYS_*|MINGW*)
     [ -d /c/Apps/bin ] && PATH=$PATH:/c/Apps/bin
     [ x$TERM == xscreen ] && TERM=xterm
-    alias ls='ls --color'
+    alias ls='ls --color -CF'
     [ -d $HOME/.gem ] && PATH=$PATH:$HOME/.gem/ruby/2.4.0/bin
     ;;
 esac
