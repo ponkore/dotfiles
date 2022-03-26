@@ -1,0 +1,5 @@
+*.old
+*.zwc
+modules
+.zcompdump*
+.zhistory
