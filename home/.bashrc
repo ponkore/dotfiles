@@ -95,7 +95,7 @@ fi
 
 case `uname` in
 FreeBSD)
-    export JAVA_VERSION=11
+    export JAVA_VERSION=17
     ;;
 Darwin)
     # for Postgres.app
