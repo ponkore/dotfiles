@@ -19,4 +19,5 @@ return {
   },
   use_fancy_tab_bar = true,
   window_background_opacity = 0.85,
+  exit_behavior="Close"
 }
