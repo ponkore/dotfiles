@@ -8,8 +8,8 @@
 	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
 [user]
-	name = ponkore
-	email = ponkore@gmail.com
+	name = masao
+	email = masao.kato@no-sinker.co.jp
 [magit]
 	hideCampaign = true
 [color]

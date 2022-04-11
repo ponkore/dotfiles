@@ -2,4 +2,4 @@
 *.zwc
 modules
 .zcompdump*
-.zhistory
+.zsh_history
