@@ -138,21 +138,19 @@ export XDG_STATE_HOME=$HOME/.local/state
 
 export HISTFILE=$XDG_DATA_HOME/zsh/history
 
-
+#
+# homebrew
+#
 PATH=/opt/homebrew/bin:$PATH
 eval "$(/opt/homebrew/bin/brew shellenv)"
 eval "$(rbenv init - zsh)"
 
+#
+# nvm
+#
 export NVM_DIR="$HOME/.nvm"
 [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && . "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
 [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && . "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
-
-if [ -d $HOME/.rbenv ]; then
-    export PATH="$HOME/.rbenv/bin:$PATH"
-    eval "$(rbenv init -)"
-    export RUBYOPT=-W0
-    # export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
-fi
 
 if [ -d $HOME/.nvm ]; then
     export NVM_DIR=$HOME/.nvm
@@ -176,6 +174,16 @@ if [ -d $HOME/.nvm ]; then
         export PATH=$HOME/.npm/bin:$PATH
         export MANPATH=$HOME/.npm/man:$MANPATH
     fi
+fi
+
+#
+# ruby
+#
+if [ -d $HOME/.rbenv ]; then
+    export PATH="$HOME/.rbenv/bin:$PATH"
+    eval "$(rbenv init -)"
+    export RUBYOPT=-W0
+    # export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
 fi
 
 [ -d $HOME/.cargo/bin ] && PATH=$PATH:$HOME/.cargo/bin
