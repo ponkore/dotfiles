@@ -131,6 +131,9 @@ unset key
 #
 #
 #
+export LANG=ja_JP.UTF-8
+export EDITOR=vim
+
 export XDG_CONFIG_HOME=$HOME/.config
 export XDG_CACHE_HOME=$HOME/.cache
 export XDG_DATA_HOME=$HOME/.local/share
@@ -139,23 +142,40 @@ export XDG_STATE_HOME=$HOME/.local/state
 export HISTFILE=$XDG_DATA_HOME/zsh/history
 
 #
+# path_helper (for macOS)
+#
+if [ -x /usr/libexec/path_helper ]; then
+    eval $(/usr/libexec/path_helper -s)
+fi
+
+#
 # homebrew
 #
-PATH=/opt/homebrew/bin:$PATH
-eval "$(/opt/homebrew/bin/brew shellenv)"
-eval "$(rbenv init - zsh)"
+if [ -d "/opt/homebrew" ]; then
+    PATH=/opt/homebrew/bin:$PATH
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
+
+#
+# go
+#
+if [ -d $HOME/.go ]; then
+    export GOPATH=$HOME/.go
+    export PATH=$GOPATH/bin:$PATH
+fi
 
 #
 # nvm
 #
-export NVM_DIR="$HOME/.nvm"
-[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && . "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
-[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && . "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
-
 if [ -d $HOME/.nvm ]; then
-    export NVM_DIR=$HOME/.nvm
-    [ -s $NVM_DIR/nvm.sh ] && . $NVM_DIR/nvm.sh  # This loads nvm
-    [ -s $NVM_DIR/bash_completion ] && . $NVM_DIR/bash_completion  # This loads nvm bash_completion
+    if [ -d "/opt/homebrew/opt/nvm" ]; then
+        [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && . "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+        [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && . "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+    else
+        export NVM_DIR=$HOME/.nvm
+        [ -s $NVM_DIR/nvm.sh ] && . $NVM_DIR/nvm.sh  # This loads nvm
+        [ -s $NVM_DIR/bash_completion ] && . $NVM_DIR/bash_completion  # This loads nvm bash_completion
+    fi
 
     # tabtab source for serverless package
     # uninstall by removing these lines or running `tabtab uninstall serverless`
@@ -177,18 +197,49 @@ if [ -d $HOME/.nvm ]; then
 fi
 
 #
+# python
+#
+if [ -d $HOME/.pyenv -a ! -d $HOME/.pyenv/pyenv-win ]; then
+    export PYENV_ROOT=$HOME/.pyenv
+    export PATH="$PYENV_ROOT/bin:$PATH"
+    if command -v pyenv 1>/dev/null 2>&1; then
+        eval "$(pyenv init -)"
+    fi
+fi
+
+#
+# php
+#
+if [ -d $HOME/.phpenv ]; then
+    export PHPENV_ROOT="$HOME/.phpenv"
+    export PATH="$PHPENV_ROOT/bin:$PATH"
+    if command -v phpenv 1>/dev/null 2>&1; then
+        eval "$(phpenv init -)"
+    fi
+fi
+
+#
 # ruby
 #
 if [ -d $HOME/.rbenv ]; then
     export PATH="$HOME/.rbenv/bin:$PATH"
-    eval "$(rbenv init -)"
+    eval "$(rbenv init - zsh)"
     export RUBYOPT=-W0
     # export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
 fi
 
-[ -d $HOME/.cargo/bin ] && PATH=$PATH:$HOME/.cargo/bin
+#
+# rust
+#
+if [ -d $HOME/.cargo/bin ]; then
+    PATH=$PATH:$HOME/.cargo/bin
+fi
 
-alias ls='exa'
-alias rg='rg -p'
-alias less='less -R'
-alias cat='bat'
+#
+# aliases
+#
+command -v exa   1>/dev/null 2>&1 && alias ls='exa'
+command -v rg    1>/dev/null 2>&1 && alias rg='rg -p'
+command -v less  1>/dev/null 2>&1 && alias less='less -R'
+command -v bat   1>/dev/null 2>&1 && alias cat='bat'
+command -v vim   1>/dev/null 2>&1 && alias vi='vim'
