@@ -238,7 +238,7 @@ fi
 #
 # aliases
 #
-command -v exa   1>/dev/null 2>&1 && alias ls='exa'
+command -v exa   1>/dev/null 2>&1 && alias ls='exa --classify --icons -h --reverse'
 command -v rg    1>/dev/null 2>&1 && alias rg='rg -p'
 command -v less  1>/dev/null 2>&1 && alias less='less -R'
 command -v bat   1>/dev/null 2>&1 && alias cat='bat'

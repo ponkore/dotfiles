@@ -15,3 +15,4 @@ source /Users/masao/.homesick/repos/dotfiles/home/.config/zsh/.zim/modules/zsh-s
 source /Users/masao/.homesick/repos/dotfiles/home/.config/zsh/.zim/modules/zsh-history-substring-search/zsh-history-substring-search.zsh
 source /Users/masao/.homesick/repos/dotfiles/home/.config/zsh/.zim/modules/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /Users/masao/.homesick/repos/dotfiles/home/.config/zsh/.zim/modules/zsh-abbr/zsh-abbr.zsh
+source /Users/masao/.homesick/repos/dotfiles/home/.config/zsh/.zim/modules/exa/init.zsh
