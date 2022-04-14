@@ -238,7 +238,10 @@ fi
 #
 # fzf
 #
-export FZF_DEFAULT_OPTS='--layout=reverse --border --exit-0'
+if [ -f ~/.fzf.zsh ]; then
+    source ~/.fzf.zsh
+    export FZF_DEFAULT_OPTS='--layout=reverse --border --exit-0'
+fi
 
 #
 # aliases
