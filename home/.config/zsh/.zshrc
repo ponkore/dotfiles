@@ -236,9 +236,14 @@ if [ -d $HOME/.cargo/bin ]; then
 fi
 
 #
+# fzf
+#
+export FZF_DEFAULT_OPTS='--layout=reverse --border --exit-0'
+
+#
 # aliases
 #
-command -v exa   1>/dev/null 2>&1 && alias ls='exa --classify --icons -h --reverse'
+command -v exa   1>/dev/null 2>&1 && alias ls='exa --classify --icons -h'
 command -v rg    1>/dev/null 2>&1 && alias rg='rg -p'
 command -v less  1>/dev/null 2>&1 && alias less='less -R'
 command -v bat   1>/dev/null 2>&1 && alias cat='bat'
