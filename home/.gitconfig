@@ -30,3 +30,5 @@
 	rebase = false
 [ghq]
 	root=~/Projects
+[init]
+	defaultBranch = main

@@ -201,3 +201,4 @@ alias dphpunit='docker exec -w /home/fwdss/fwdsalessupport -it v1_develop_fwdss_
 [ -d ~/Library/Android/sdk/ndk/21.3.6528147 ] && PATH=~/Library/Android/sdk/ndk/21.3.6528147:$PATH
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+. "$HOME/.cargo/env"
