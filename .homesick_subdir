@@ -2,3 +2,4 @@ bin
 .lein
 etc
 .config
+.config/fzf/shell
