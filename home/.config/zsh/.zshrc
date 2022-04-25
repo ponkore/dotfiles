@@ -246,11 +246,13 @@ fi
 #
 # aliases
 #
-command -v exa   1>/dev/null 2>&1 && alias ls='exa --classify --icons -h'
+command -v exa   1>/dev/null 2>&1 && alias ls='exa --classify --icons --group-directories-first -h'
 command -v rg    1>/dev/null 2>&1 && alias rg='rg -p'
 command -v less  1>/dev/null 2>&1 && alias less='less -R'
 command -v bat   1>/dev/null 2>&1 && alias cat='bat'
 command -v vim   1>/dev/null 2>&1 && alias vi='vim'
+
+alias ee='emacsclient --tty '
 
 #
 #
