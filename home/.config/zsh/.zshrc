@@ -253,24 +253,3 @@ command -v bat   1>/dev/null 2>&1 && alias cat='bat'
 command -v vim   1>/dev/null 2>&1 && alias vi='vim'
 
 alias ee='emacsclient --tty '
-
-#
-#
-#
-function cd_target() {
-  d=$( \
-    fd --type d -H \
-    -E .git \
-    -E node_modules \
-    -E .terragrunt-cache \
-    | fzf )
-
-  if [[ $d = "" ]]; then
-    return
-  fi
-
-  cd $d
-}
-
-zle -N cd_target
-bindkey "^k" cd_target
