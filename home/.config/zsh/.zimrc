@@ -22,6 +22,7 @@ zmodule utility
 #
 # Prompt
 #
+zmodule prompt-pwd
 
 # Exposes to prompts how long the last command took to execute, used by asciiship.
 zmodule duration-info
