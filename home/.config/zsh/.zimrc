@@ -22,15 +22,7 @@ zmodule utility
 #
 # Prompt
 #
-zmodule prompt-pwd
-
-# Exposes to prompts how long the last command took to execute, used by asciiship.
-zmodule duration-info
-# Exposes git repository status information to prompts, used by asciiship.
-zmodule git-info
-# A heavily reduced, ASCII-only version of the Spaceship and Starship prompts.
-# zmodule asciiship
-zmodule eriner
+# Starship を使うため eriner 関連モジュールは不要
 
 #
 # Completion
