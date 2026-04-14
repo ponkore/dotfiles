@@ -82,7 +82,7 @@ if [ -d $HOME/.sdkman ]; then
 fi
 
 # rust
-[ -d $HOME/.cargo/bin ] && PATH=$PATH:$HOME/.cargo/bin
+[ -f $HOME/.cargo/env ] && . "$HOME/.cargo/env"
 
 # roswell
 [ -d $HOME/.roswell/bin ] && PATH=$PATH:$HOME/.roswell/bin
@@ -173,6 +173,10 @@ fi
 # hub command completion
 [ -f $HOME/etc/hub.bash_completion.sh ] && . $HOME/etc/hub.bash_completion.sh
 
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:$HOME/.lmstudio/bin"
+# End of LM Studio CLI section
+
 # aliases
 command -v exa   1>/dev/null 2>&1 && alias ls='exa'
 command -v rg    1>/dev/null 2>&1 && alias rg='rg -p'
@@ -202,3 +206,8 @@ alias dphpunit='docker exec -w /home/fwdss/fwdsalessupport -it v1_develop_fwdss_
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 . "$HOME/.cargo/env"
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/masao/.lmstudio/bin"
+# End of LM Studio CLI section
+
