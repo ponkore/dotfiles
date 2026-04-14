@@ -2,3 +2,5 @@
 home/bin/light
 home/.lein/self-installs
 home/.lein/repl-history
+home/.config/zsh/.zcompcache
+.claude/*.local.*
