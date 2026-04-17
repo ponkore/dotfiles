@@ -130,7 +130,6 @@ unset key
 
 #
 #
-#
 export LANG=ja_JP.UTF-8
 export EDITOR=vim
 
@@ -141,11 +140,22 @@ export XDG_STATE_HOME=$HOME/.local/state
 
 export HISTFILE=$XDG_DATA_HOME/zsh/history
 
+if [ "$TERM" = "tmux-256color" ]; then
+  TERM=xterm-256color
+fi
+
 #
 # path_helper (for macOS)
 #
 if [ -x /usr/libexec/path_helper ]; then
     eval $(/usr/libexec/path_helper -s)
+fi
+
+#
+# ~/.local/bin
+#
+if [ -d ~/.local/bin ]; then
+    PATH=~/.local/bin:$PATH
 fi
 
 #
@@ -155,6 +165,11 @@ if [ -d "/opt/homebrew" ]; then
     PATH=/opt/homebrew/bin:$PATH
     eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
+
+#
+# starship
+#
+command -v starship &>/dev/null && eval "$(starship init zsh)"
 
 #
 # go
@@ -244,12 +259,29 @@ if [ -f ~/.fzf.zsh ]; then
 fi
 
 #
+# google cloud sdk
+#
+source "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc"
+source "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc"
+
+#
 # aliases
 #
-command -v exa   1>/dev/null 2>&1 && alias ls='exa --classify --icons --group-directories-first -h'
+# command -v eza   1>/dev/null 2>&1 && alias ls='eza --classify --icons --group-directories-first -h'
+command -v lsd   1>/dev/null 2>&1 && alias ls='lsd --classify --group-directories-first -h'
 command -v rg    1>/dev/null 2>&1 && alias rg='rg -p'
 command -v less  1>/dev/null 2>&1 && alias less='less -R'
 command -v bat   1>/dev/null 2>&1 && alias cat='bat'
 command -v vim   1>/dev/null 2>&1 && alias vi='vim'
 
 alias ee='emacsclient --tty '
+
+function ya() {
+    tmp="$(mktemp -t "yazi-cwd.XXXXX")"
+    yazi --cwd-file="$tmp"
+    if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+        cd -- "$cwd"
+    fi
+    rm -f -- "$tmp"
+}
+
