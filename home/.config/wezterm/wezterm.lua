@@ -1,24 +1,31 @@
 local wezterm = require 'wezterm';
+-- local mux = wezterm.mux
+local keymap = require 'keymap'
+local appearance = require 'appearance'
+local actions = require 'actions'
+local config = {}
+if wezterm.config_builder then
+  config = wezterm.config_builder()
+end
 
-return {
-  -- font = wezterm.font("Ricty"), -- 自分の好きなフォントいれる
-  font = wezterm.font("HackGen Console NF"), -- 自分の好きなフォントいれる
-  use_ime = true, -- wezは日本人じゃないのでこれがないとIME動かない
-  font_size = 16.0,
-  color_scheme = "Wez", -- 自分の好きなテーマ探す https://wezfurlong.org/wezterm/colorschemes/index.html
-  hide_tab_bar_if_only_one_tab = true,
-  adjust_window_size_when_changing_font_size = false,
-  default_prog = {"zsh", "--login"},
-  launch_menu = {
-    {
-      args = {"top"},
-    },
-    {
-      label = "Bash",
-      args = {"bash", "-l"},
-    },
-  },
-  use_fancy_tab_bar = true,
-  window_background_opacity = 0.85,
-  exit_behavior="Close"
-}
+--
+-- key
+--
+keymap.apply(config)
+
+--
+-- appearance
+--
+appearance.apply(config)
+
+--
+-- actions (launch_menu, default_prog)
+--
+actions.apply(config)
+
+--
+-- other configration
+--
+config.use_ime = true
+
+return config
