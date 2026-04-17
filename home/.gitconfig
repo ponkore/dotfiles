@@ -8,7 +8,7 @@
 	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
 [user]
-	name = ponkore
+	name = Masao KATO
 	email = ponkore@gmail.com
 [magit]
 	hideCampaign = true
@@ -32,7 +32,10 @@
 	root=~/Projects
 [init]
 	defaultBranch = main
-
+[credential "helperselector"]
+	selected = manager-core
+[credential "https://no-sinker.backlog.com"]
+	provider = generic
 [core]
 	pager = delta
 
