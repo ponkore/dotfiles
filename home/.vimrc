@@ -1,11 +1,28 @@
-set term=ansi
 syntax enable
-set encoding=utf-8
-set fileencoding=utf-8
-set fileencodings=utf-8,euc-jp,sjis,iso-2022-jp
 set number
+set directory=~/.config/vimfiles/swap//
+set viminfo+=n~/.config/vimfiles/viminfo
+let g:netrw_home = '~/.config/vimfiles'
+set runtimepath+=~/.config/vimfiles
+set wrap
 
-set ai nocp digraph ek hid   ru sc vb wmnu   noeb noet nosol
-set bs=2 fo=cqrt ls=2 shm=at tw=72 ww=<,>,h,l 
-set comments=b:#,:%,n:>
-set viminfo=%,'50,\"100,:100,n~/.viminfo
+" 検索系
+set ignorecase
+set smartcase
+set incsearch
+set wrapscan
+set hlsearch
+nmap <Esc><Esc> :nohlsearch<CR><Esc>
+
+" clipboard
+" set clipboard&
+" set clipboard^=unnamedplus
+set clipboard=unnamed
+
+" F5で vimrc を reload
+nnoremap <F5> :source $MYVIMRC<CR>
+
+" vim-plug
+call plug#begin('~/.config/vimfiles/plugged')
+Plug 'lambdalisue/vim-fern'
+call plug#end()
