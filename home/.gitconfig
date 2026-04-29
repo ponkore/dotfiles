@@ -36,8 +36,8 @@
 	selected = manager-core
 [credential "https://no-sinker.backlog.com"]
 	provider = generic
-[core]
-	pager = delta
+# [core]
+# 	pager = delta
 
 [interactive]
 	difffilter = delta --color-only
